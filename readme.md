@@ -1,5 +1,17 @@
 ## Instructions to setup a media server on Debian 12 with Jellyfin and the Servarr stack.
 
+### Folder
+create shared folder: 
+    - create directory `downloads`:
+    ```
+    mkdir -p downloads/qbittorrent/{completed,incomplete,torrents} && mkdir -p downloads/nzbget/{completed,intermediate,nzb,queue,tmp}
+    ```
+    - create directory `movies`, `music` and `shows` under a shared folder (e.g. `mnt/nfs/media`):
+    `mkdir -p /media/{movies, music shows}`
+    - if you don't have permission to create a directory:
+      1. check for current permissions: `ls -ld /mnt/`
+      2. set ownership: `sudo chown <user>:<user> /mnt/`
+
 ### Jellyfin
 
 1. ssh into the Debian server you want to install Jellyfin on
@@ -24,12 +36,7 @@ Open a browser and go to `http://192.168.100.10:8096`
 (`http://192.168.120.12:8096/web/#/wizardstart.html`)
 
 4. log into Jellyfin to check wheter initial setup was successfull
-5. create shared folder: 
-    - create directory `movies`, `music` and `shows` under a shared folder (e.g. `mnt/nfs/media`): `mkdir -p mnt/nfs/media/shows mnt/nfs/media/movies mnt/nfs/media/music`
-    - if you don't have permission to create a directory:
-      1. check for current permissions: `ls -ld /mnt/`
-      2. set ownership: `sudo chown <user>:<user> /mnt/`
-6. setup Jellyfin
+5. setup Jellyfin
     - add libraries: movies, shows and music (under dashboard -> libraries)
 
 ### Servarr Stack
