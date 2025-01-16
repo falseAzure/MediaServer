@@ -83,7 +83,12 @@ docker compose -f servarr.yaml up -d
 ```
 
 ##### qbittorent
+
 ##### radarr and sonarr
 
-
+##### gluetun
+check if gluetun is running:
+```
+docker run --rm --network=container:gluetun alpine:3.20 sh -c "apk add wget && wget -qO- https://ipinfo.io"
+```
 
