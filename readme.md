@@ -1,16 +1,29 @@
 ## Instructions to setup a media server on Debian 12 with Jellyfin and the Servarr stack.
 
+- Jellyfin: 8096
+- Jellyseerr: 5055
+- Prowlarr: 9696
+- Sonarr: 8989
+- Radarr: 7878
+- Sabnzbd: 6789
+- qBittorent: 8080
+- Gluetun
+- Homepage: 3000
+- 
+
 ### Folder
 create shared folder: 
-    - create directory `downloads`:
-    ```
-    mkdir -p downloads/qbittorrent/{completed,incomplete,torrents} && mkdir -p downloads/nzbget/{completed,intermediate,nzb,queue,tmp}
-    ```
-    - create directory `movies`, `music` and `shows` under a shared folder (e.g. `mnt/nfs/media`):
-    `mkdir -p /media/{movies, music shows}`
-    - if you don't have permission to create a directory:
-      1. check for current permissions: `ls -ld /mnt/`
-      2. set ownership: `sudo chown <user>:<user> /mnt/`
+- create directory `downloads`:
+```
+mkdir -p downloads/qbittorrent/{completed,incomplete,torrents} && mkdir -p downloads/sabnzbd/{completed,intermediate,nzb,queue,tmp}
+```
+- create directory `movies`, `music` and `shows` under a shared folder (e.g. `mnt/nfs/media`):
+```
+mkdir -p /media/{movies, music shows}
+```
+- if you don't have permission to create a directory:
+  1. check for current permissions: `ls -ld /mnt/`
+  2. set ownership: `sudo chown <user>:<user> /mnt/`
 
 ### Jellyfin
 
@@ -62,3 +75,7 @@ Create and run Portainer
 docker volume create portainer_data
 docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.21.5
 ```
+
+#### Docker Compose
+
+
