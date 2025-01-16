@@ -24,9 +24,9 @@ Open a browser and go to `http://192.168.100.10:8096`
 
 4. log into Jellyfin to check wheter initial setup was successfull
 5. create shared folder: 
-  - create directory `movies`, `music` and `shows` under a shared folder (e.g. `mnt/nfs/media`): `mkdir -p mnt/nfs/media/shows mnt/nfs/media/movies mnt/nfs/media/music`
-  - if you don't have permission to create a directory:
-    - check for current permissions: `ls -ld /mnt/`
-    - set ownership: `sudo chown <user>:<user> /mnt/`
+    - create directory `movies`, `music` and `shows` under a shared folder (e.g. `mnt/nfs/media`): `mkdir -p mnt/nfs/media/shows mnt/nfs/media/movies mnt/nfs/media/music`
+    - if you don't have permission to create a directory:
+      1. check for current permissions: `ls -ld /mnt/`
+      2. set ownership: `sudo chown <user>:<user> /mnt/`
 6. setup Jellyfin
-  1. add libraries: movies, shows and music (under dashboard/libraries)
+    - add libraries: movies, shows and music (under dashboard -> libraries)
