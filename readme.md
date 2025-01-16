@@ -3,6 +3,7 @@
 ### Jellyfin
 
 1. ssh into the Debian server you want to install Jellyfin on
+(if ssh is not enabled install it via `sudo apt install openssh-server`).
 
 ```
 ssh xxx@192.168.100.10
@@ -30,3 +31,27 @@ Open a browser and go to `http://192.168.100.10:8096`
       2. set ownership: `sudo chown <user>:<user> /mnt/`
 6. setup Jellyfin
     - add libraries: movies, shows and music (under dashboard -> libraries)
+
+### Servarr Stack
+
+#### Docker
+Install Docker using the convenience script
+(if curl is not available install it via `sudo apt install curl`).
+
+``` bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh ./get-docker.sh
+```
+
+Manage Docker as non root user:
+
+```
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+Create and run Portainer
+```
+docker volume create portainer_data
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.21.5
+```
