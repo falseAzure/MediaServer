@@ -9,7 +9,6 @@
 - qBittorent: 8080
 - Gluetun
 - Homepage: 3000
-- 
 
 ### Folder
 create shared folder: 
@@ -77,5 +76,14 @@ docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /va
 ```
 
 #### Docker Compose
+move the `servarr.yaml` file into the `~/docker` folder and run:
+
+```
+docker compose -f servarr.yaml up -d
+```
+
+##### qbittorent
+##### radarr and sonarr
+
 
 
